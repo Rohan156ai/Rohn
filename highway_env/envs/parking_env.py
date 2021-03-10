@@ -40,6 +40,7 @@ class ParkingEnv(AbstractEnv, GoalEnv):
                 "type": "ContinuousAction"
             },
             "simulation_frequency": 15,
+            "vehicles_count":15,
             "policy_frequency": 5,
             "duration": 100,
             "screen_width": 600,
