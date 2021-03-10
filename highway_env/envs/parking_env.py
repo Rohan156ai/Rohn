@@ -31,6 +31,7 @@ class ParkingEnv(AbstractEnv, GoalEnv):
         config.update({
             "observation": {
                 "type": "KinematicsGoal",
+                "vehicles_count": 15,
                 "features": ['x', 'y', 'vx', 'vy', 'cos_h', 'sin_h'],
                 "scales": [100, 100, 5, 5, 1, 1],
                 "normalize": False
