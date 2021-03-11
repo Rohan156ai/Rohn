@@ -12,7 +12,7 @@ from highway_env.road.road import Road, RoadNetwork
 from highway_env.vehicle.objects import Landmark
 
 
-class ParkingEnv1(AbstractEnv, GoalEnv):
+class ParkingEnv_N(AbstractEnv, GoalEnv):
     """
     A continuous control environment.
 
@@ -52,7 +52,7 @@ class ParkingEnv1(AbstractEnv, GoalEnv):
         return config
 
     def _info(self, obs, action) -> dict:
-        info = super(ParkingEnv, self)._info(obs, action)
+        info = super(ParkingEnv_N, self)._info(obs, action)
         if isinstance(self.observation_type, MultiAgentObservation):
             success = tuple(self._is_success(agent_obs['achieved_goal'], agent_obs['desired_goal']) for agent_obs in obs)
         else:
@@ -137,17 +137,17 @@ class ParkingEnv1(AbstractEnv, GoalEnv):
         return time or crashed or success
 
 
-class ParkingEnvActionRepeat(ParkingEnv):
+class ParkingEnvActionRepeat_N(ParkingEnv_N):
     def __init__(self):
         super().__init__({"policy_frequency": 1, "duration": 20})
 
 
 register(
     id='parking-v1',
-    entry_point='highway_env.envs:ParkingEnv1',
+    entry_point='highway_env.envs:ParkingEnv_N',
 )
 
 register(
-    id='parking-ActionRepeat-v0',
-    entry_point='highway_env.envs:ParkingEnvActionRepeat'
+    id='parking-ActionRepeat-v1',
+    entry_point='highway_env.envs:ParkingEnvActionRepeat_N'
 )
