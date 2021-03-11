@@ -12,7 +12,7 @@ from highway_env.road.road import Road, RoadNetwork
 from highway_env.vehicle.objects import Landmark
 
 
-class ParkingEnv(AbstractEnv, GoalEnv):
+class ParkingEnv1(AbstractEnv, GoalEnv):
     """
     A continuous control environment.
 
@@ -144,7 +144,7 @@ class ParkingEnvActionRepeat(ParkingEnv):
 
 register(
     id='parking-v1',
-    entry_point='highway_env.envs:ParkingEnv',
+    entry_point='highway_env.envs:ParkingEnv1',
 )
 
 register(
