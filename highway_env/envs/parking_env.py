@@ -31,7 +31,6 @@ class ParkingEnv(AbstractEnv, GoalEnv):
         config.update({
             "observation": {
                 "type": "KinematicsGoal",
-                "vehicles_count": 15,
                 "features": ['x', 'y', 'vx', 'vy', 'cos_h', 'sin_h'],
                 "scales": [100, 100, 5, 5, 1, 1],
                 "normalize": False
@@ -40,9 +39,6 @@ class ParkingEnv(AbstractEnv, GoalEnv):
                 "type": "ContinuousAction"
             },
             "simulation_frequency": 15,
-            "initial_vehicle_count": 10,
-            "spawn_probability": 0.6,
-            "vehicles_count":15,
             "policy_frequency": 5,
             "duration": 100,
             "screen_width": 600,
@@ -53,19 +49,18 @@ class ParkingEnv(AbstractEnv, GoalEnv):
         })
         return config
 
-    def step(self, action: np.ndarray) -> Tuple[np.ndarray, float, bool, dict]:
-        obs, reward, terminal, info = super().step(action)
+    def _info(self, obs, action) -> dict:
+        info = super(ParkingEnv, self)._info(obs, action)
         if isinstance(self.observation_type, MultiAgentObservation):
             success = tuple(self._is_success(agent_obs['achieved_goal'], agent_obs['desired_goal']) for agent_obs in obs)
         else:
             success = self._is_success(obs['achieved_goal'], obs['desired_goal'])
         info.update({"is_success": success})
-        return obs, reward, terminal, info
+        return info
 
     def _reset(self):
         self._create_road()
         self._create_vehicles()
-        
 
     def _create_road(self, spots: int = 15) -> None:
         """
@@ -131,9 +126,6 @@ class ParkingEnv(AbstractEnv, GoalEnv):
         obs = obs if isinstance(obs, tuple) else (obs,)
         success = all(self._is_success(agent_obs['achieved_goal'], agent_obs['desired_goal']) for agent_obs in obs)
         return time or crashed or success
-    
-    
-
 
 
 class ParkingEnvActionRepeat(ParkingEnv):
