@@ -151,7 +151,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
                 "type": "ContinuousAction"
             },
             "simulation_frequency": 15,
-            "initial_vehicle_count":10,
+            "initial_vehicle_count":20,
             "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
             "spawn_probability":0.06,
             "policy_frequency": 5,
@@ -207,7 +207,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             self.controlled_vehicles.append(vehicle)
         self.initial_vehicle_count = []
         for i in range(2,self.config["initial_vehicle_count"]):
-            vehicle_1 = self.action_type.vehicle_class(self.road, [i*20, (i+1)*2], 1*np.pi*self.np_random.rand(), 0)
+            vehicle_1 = self.action_type.vehicle_class(self.road, [i*1, i*1], 1*np.pi*self.np_random.rand(), 0)
            
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
