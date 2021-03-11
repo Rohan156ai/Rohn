@@ -248,7 +248,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         
 register(
     id='parking-v3',
-    entry_point='highway_env.envs:ParkingEnv',
+    entry_point='highway_env.envs:ParkingEnv'
 )
 register(
     id='parking-v4',
