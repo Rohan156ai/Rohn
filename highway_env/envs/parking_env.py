@@ -207,8 +207,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             self.controlled_vehicles.append(vehicle)
         self.initial_vehicle_count = []
         for i in range(2,self.config["initial_vehicle_count"]):
-            vehicle_type = utils.class_from_path(self.config["other_vehicles_type"])
-            vehicle_1 = vehicle_type.make_on_lane(self.road, [i*20, 2], 2*np.pi*self.np_random.rand(), 0)
+            vehicle_1 = self.action_type.vehicle_class(self.road, [i*30, 2], 2*np.pi*self.np_random.rand(), 0)
            
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
