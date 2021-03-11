@@ -57,7 +57,8 @@ class IDMVehicle(ControlledVehicle):
         self.timer = timer or (np.sum(self.position)*np.pi) % self.LANE_CHANGE_DELAY
 
     def randomize_behavior(self):
-        pass
+        for i in range(50):
+            self.act([.3,.2])
 
     @classmethod
     def create_from(cls, vehicle: ControlledVehicle) -> "IDMVehicle":
