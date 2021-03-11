@@ -208,7 +208,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         for i in range(self.config["initial_vehicle_count"]):
             vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
             self.road.vehicles.append(vehicle)
-            self.controlled_vehicles.append(vehicle)
+            self.initial_vehicle_couont.append(vehicle)
 
 
         lane = self.np_random.choice(self.road.network.lanes_list())
