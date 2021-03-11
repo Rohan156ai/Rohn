@@ -144,7 +144,7 @@ class ParkingEnvActionRepeat_N(ParkingEnv_N):
 
 register(
     id='parking-v1',
-    entry_point='highway_env.envs:ParkingEnv_N',
+    entry_point='highway_env.envs:ParkingEnv_N'
 )
 
 register(
