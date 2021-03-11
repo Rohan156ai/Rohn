@@ -132,7 +132,9 @@ class ParkingEnvActionRepeat(ParkingEnv):
     def __init__(self):
         super().__init__({"policy_frequency": 1, "duration": 20})
 
-
+class ParkingEnv_new(AbstractEnv,GoalEnv):
+    
+        
 register(
     id='parking-v3',
     entry_point='highway_env.envs:ParkingEnv',
