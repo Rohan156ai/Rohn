@@ -253,6 +253,7 @@ register(
 register(
     id='parking-v4',
     entry_point='highway_env.envs:ParkingEnv_new'
+)
 register(
     id='parking-ActionRepeat-v0',
     entry_point='highway_env.envs:ParkingEnvActionRepeat'
