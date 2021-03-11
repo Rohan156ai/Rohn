@@ -152,6 +152,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             },
             "simulation_frequency": 15,
             "initial_vehicle_count":10,
+            "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle
             "spawn_probability":0.06,
             "policy_frequency": 5,
             "duration": 100,
@@ -205,10 +206,12 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             self.road.vehicles.append(vehicle)
             self.controlled_vehicles.append(vehicle)
         self.initial_vehicle_count = []
-        for i in range(self.config["initial_vehicle_count"]):
-            vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
-            self.road.vehicles.append(vehicle)
-            self.initial_vehicle_count.append(vehicle)
+        for i in range(2,self.config["initial_vehicle_count"]):
+            vehicle_type = utils.class_from_path(self.config["other_vehicles_type"])
+            vehicle_1 = vehicle_type.make_on_lane(self.road, [i*20, 2], 2*np.pi*self.np_random.rand(), 0)
+           
+            self.road.vehicles.append(vehicle_1)
+            self.initial_vehicle_count.append(vehicle_1)
 
 
         lane = self.np_random.choice(self.road.network.lanes_list())
