@@ -39,6 +39,8 @@ class ParkingEnv(AbstractEnv, GoalEnv):
                 "type": "ContinuousAction"
             },
             "simulation_frequency": 15,
+            "initial_vehicle_count":10,
+            "spawn_probability":0.06,
             "policy_frequency": 5,
             "duration": 100,
             "screen_width": 600,
@@ -61,6 +63,7 @@ class ParkingEnv(AbstractEnv, GoalEnv):
     def _reset(self):
         self._create_road()
         self._create_vehicles()
+        self.
 
     def _create_road(self, spots: int = 15) -> None:
         """
@@ -90,6 +93,12 @@ class ParkingEnv(AbstractEnv, GoalEnv):
             vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
             self.road.vehicles.append(vehicle)
             self.controlled_vehicles.append(vehicle)
+        self.initial_vehicle_count = []
+        for i in range(self.config["initial_vehicle_count"]):
+            vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
+            self.road.vehicles.append(vehicle)
+            self.controlled_vehicles.append(vehicle)
+         
 
         lane = self.np_random.choice(self.road.network.lanes_list())
         self.goal = Landmark(self.road, lane.position(lane.length/2, 0), heading=lane.heading)
