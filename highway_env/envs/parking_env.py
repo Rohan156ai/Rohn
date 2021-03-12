@@ -155,7 +155,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
             "spawn_probability":0.06,
             "policy_frequency": 5,
-            "duration": 100,
+            "duration": 300,
             "screen_width": 600,
             "screen_height": 300,
             "centering_position": [0.5, 0.5],
