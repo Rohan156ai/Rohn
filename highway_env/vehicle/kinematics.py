@@ -145,9 +145,9 @@ class Vehicle(RoadObject):
 
     def clip_actions(self) -> None:
         if self.dash:   ########
-            for i in range(2):
+            for i in range(5):
                 self.action['steering'] = 0
-                self.action['acceleration'] = -.6  ########
+                self.action['acceleration'] = -.1  ########
             self.dash = False
         self.action['steering'] = float(self.action['steering'])
         self.action['acceleration'] = float(self.action['acceleration'])
