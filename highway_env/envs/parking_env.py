@@ -223,7 +223,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         yi = 10
         li = 8
         for i in range(6):
-             xu = (k - spots // 2) * (width + x_offset) - width / 2
+             xu = (i - 15 // 2) * (4.0 + xi) - 4.0 / 2
              vehi = self.action_type.vehicle_class(self.road,[xu,yi], 2*np.pi*self.np_random.rand(),0)
              self.road.vehicles.append(vehi)
 
