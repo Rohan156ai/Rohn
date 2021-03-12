@@ -137,7 +137,7 @@ class Vehicle(RoadObject):
         self.position += v * dt
         if self.impact is not None:
             self.position += self.impact
-           # self.dash = True  ####### 
+            self.dash = True  ####### 
             self.impact = None
         self.heading += self.speed * np.sin(beta) / (self.LENGTH / 2) * dt
         self.speed += self.action['acceleration'] * dt
