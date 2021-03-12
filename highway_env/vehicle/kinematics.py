@@ -148,6 +148,7 @@ class Vehicle(RoadObject):
             for i in range(2):
                 self.action['steering'] = 0
                 self.action['acceleration'] = -.6  ########
+            self.dash = False
         self.action['steering'] = float(self.action['steering'])
         self.action['acceleration'] = float(self.action['acceleration'])
         if self.speed > self.MAX_SPEED:
