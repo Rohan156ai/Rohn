@@ -145,9 +145,9 @@ class Vehicle(RoadObject):
 
     def clip_actions(self) -> None:
         if self.dash:   ########
-            for i in range(5):
-                self.action['steering'] = 0
-                self.action['acceleration'] = -.1  ########
+            
+            self.action['steering'] = 0
+            self.action['acceleration'] = -.1  ########
             
             
         self.action['steering'] = float(self.action['steering'])
@@ -182,7 +182,8 @@ class Vehicle(RoadObject):
                 self.impact = transition / 2
                 other.impact = -transition / 2
             if intersecting:
-                self.dash = other.dash = True       #######3
+                self.dash = True
+                other.dash = False       #######3
         elif isinstance(other, Obstacle):
             if not self.COLLISIONS_ENABLED:
                 return
@@ -190,7 +191,8 @@ class Vehicle(RoadObject):
             if will_intersect:
                 self.impact = transition
             if intersecting:
-                self.dash = other.hit = True             #######3
+                self.dash = True
+                other.hit = False             #######3
         elif isinstance(other, Landmark):
             intersecting, will_intersect, transition = self._is_colliding(other, dt)
             if intersecting:
