@@ -37,6 +37,7 @@ class Vehicle(RoadObject):
         super().__init__(road, position, heading, speed)
         self.action = {'steering': 0, 'acceleration': 0}
         self.crashed = False
+        self.dash = False    #####
         self.impact = None
         self.log = []
         self.history = deque(maxlen=30)
@@ -136,16 +137,17 @@ class Vehicle(RoadObject):
         self.position += v * dt
         if self.impact is not None:
             self.position += self.impact
-            self.crashed = True
+            self.dash = True  ####### 
             self.impact = None
         self.heading += self.speed * np.sin(beta) / (self.LENGTH / 2) * dt
         self.speed += self.action['acceleration'] * dt
         self.on_state_update()
 
     def clip_actions(self) -> None:
-        if self.crashed:
-            self.action['steering'] = 0
-            self.action['acceleration'] = -1.0*self.speed
+        if self.dash:   ########
+            for i in range(4):
+                self.action['steering'] = 0
+                self.action['acceleration'] = -1.0*self.speed
         self.action['steering'] = float(self.action['steering'])
         self.action['acceleration'] = float(self.action['acceleration'])
         if self.speed > self.MAX_SPEED:
@@ -178,7 +180,7 @@ class Vehicle(RoadObject):
                 self.impact = transition / 2
                 other.impact = -transition / 2
             if intersecting:
-                self.crashed = other.crashed = True
+                self.dash = other.dash = True       #######3
         elif isinstance(other, Obstacle):
             if not self.COLLISIONS_ENABLED:
                 return
@@ -186,7 +188,7 @@ class Vehicle(RoadObject):
             if will_intersect:
                 self.impact = transition
             if intersecting:
-                self.crashed = other.hit = True
+                self.dash = other.hit = True             #######3
         elif isinstance(other, Landmark):
             intersecting, will_intersect, transition = self._is_colliding(other, dt)
             if intersecting:
