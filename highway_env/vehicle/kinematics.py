@@ -148,6 +148,7 @@ class Vehicle(RoadObject):
             
             self.action['steering'] = 0
             self.action['acceleration'] = -.1  ########
+            self.dash = None
             
             
         self.action['steering'] = float(self.action['steering'])
