@@ -78,10 +78,14 @@ class ParkingEnv(AbstractEnv, GoalEnv):
             x = (k - spots // 2) * (width + x_offset) - width / 2
             net.add_lane("a", "b", StraightLane([x, y_offset], [x, y_offset+length], width=width, line_types=lt))
             net.add_lane("b", "c", StraightLane([x, -y_offset], [x, -y_offset-length], width=width, line_types=lt))
-
+        
         self.road = Road(network=net,
                          np_random=self.np_random,
                          record_history=self.config["show_trajectories"])
+ 
+            
+
+           
 
     def _create_vehicles(self) -> None:
         """Create some new random vehicles of a given type, and add them on the road."""
@@ -215,6 +219,13 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             #vehicle_1.act([.2,.3])
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
+        xi = 0
+        yi = 10
+        li = 8
+        for i in range(6):
+             xu = (k - spots // 2) * (width + x_offset) - width / 2
+             vehi = self.action_type.vehicle_class(self.road,[xu,yi], 2*np.pi*self.np_random.rand(),0)
+             self.road.vehicles.append(vehi)
 
 
         lane = self.np_random.choice(self.road.network.lanes_list())
