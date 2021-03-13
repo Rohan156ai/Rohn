@@ -5,6 +5,7 @@ from gym import GoalEnv
 import numpy as np
 from numpy.core._multiarray_umath import ndarray
 
+from highway_env import utils
 from highway_env.envs.common.abstract import AbstractEnv
 from highway_env.envs.common.observation import MultiAgentObservation
 from highway_env.road.lane import StraightLane, LineType
@@ -207,16 +208,16 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         self.controlled_vehicles = []
         for i in range(self.config["controlled_vehicles"]):
             vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
-            vehicle.color = RED
+            
             self.road.vehicles.append(vehicle)
             self.controlled_vehicles.append(vehicle)
         self.initial_vehicle_count = []
         c = 1
         for i in range(1,self.config["initial_vehicle_count"]):
             c = c*-1
-            #other_vehicles_type = utils.class_from_path(self.config["other_vehicles_type"])
-            #road.vehicles.append(other_vehicles_type(self.road,[c*i*10, i*3] , speed=29))
-            vehicle_1 = self.action_type.vehicle_class(self.road, [c*i*10, c*i*3], 1*np.pi*self.np_random.rand(), .7)
+            other_vehicles_type = utils.class_from_path(self.config["other_vehicles_type"])
+            vehicle_1 = other_vehicles_type(self.road,[c*i*10, c*i*3] , speed=10)
+            #vehicle_1 = self.action_type.vehicle_class(self.road, [c*i*10, c*i*3], 1*np.pi*self.np_random.rand(), .7)
             #vehicle_1.act([.2,.3])
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
