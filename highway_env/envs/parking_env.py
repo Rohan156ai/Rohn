@@ -221,6 +221,10 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             #vehicle_1.act([.2,.3])
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
+        for i in range(3,10):
+            c = c*-1
+            other_vehicles_type = utils.class_from_path(self.config["other_vehicles_type"])
+            vehicle_2 = other_vehicles_type(self.road,[c*i*5, c*i*1] , speed=.7)
         
 
 
