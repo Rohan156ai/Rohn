@@ -160,6 +160,8 @@ class VehicleGraphics(object):
                                   int(simulation * duration),
                                   int(simulation / frequency)):
             cls.display(v, surface, transparent=True, offscreen=offscreen)
+    
+    
 
     @classmethod
     def get_color(cls, vehicle: Vehicle, transparent: bool = False) -> Tuple[int]:
