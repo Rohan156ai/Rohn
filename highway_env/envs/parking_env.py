@@ -160,8 +160,8 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "spawn_probability":0.06,
             "policy_frequency": 5,
             "duration": 200,
-            "screen_width": 600,
-            "screen_height": 300,
+            "screen_width": 900,
+            "screen_height": 700,
             "centering_position": [0.5, 0.5],
             "scaling": 7,
             "controlled_vehicles": 1
@@ -215,17 +215,11 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             c = c*-1
             #other_vehicles_type = utils.class_from_path(self.config["other_vehicles_type"])
             #road.vehicles.append(other_vehicles_type(self.road,[c*i*10, i*3] , speed=29))
-            vehicle_1 = self.action_type.vehicle_class(self.road, [c*i*10, i*3], 1*np.pi*self.np_random.rand(), .5)
+            vehicle_1 = self.action_type.vehicle_class(self.road, [c*i*10, c*i*3], 1*np.pi*self.np_random.rand(), .7)
             #vehicle_1.act([.2,.3])
             self.road.vehicles.append(vehicle_1)
             self.initial_vehicle_count.append(vehicle_1)
-        xi = 0
-        yi = 10
-        li = 8
-        for i in range(6):
-             xu = (i - 15 // 2) * (4.0 + xi) - 4.0 / 2
-             vehi = self.action_type.vehicle_class(self.road,[xu,yi], 2*np.pi*self.np_random.rand(),0)
-             self.road.vehicles.append(vehi)
+        
 
 
         lane = self.np_random.choice(self.road.network.lanes_list())
@@ -257,11 +251,11 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         """The episode is over if the ego vehicle crashed or the goal is reached."""
         time = self.steps >= self.config["duration"]
         crashed = any(vehicle.crashed for vehicle in self.controlled_vehicles)
-      
+        das = any(vehicle.dash for vehicle in self.controlled_vehicles)
         obs = self.observation_type.observe()
         obs = obs if isinstance(obs, tuple) else (obs,)
         success = all(self._is_success(agent_obs['achieved_goal'], agent_obs['desired_goal']) for agent_obs in obs)
-        return time or success
+        return time or success or das
     
         
 register(
