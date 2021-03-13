@@ -177,6 +177,9 @@ class VehicleGraphics(object):
         if transparent:
             color = (color[0], color[1], color[2], 30)
         return color
+    
+ 
+        
 
     @classmethod
     def darken(cls, color, ratio=0.83):
