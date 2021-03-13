@@ -160,8 +160,8 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "spawn_probability":0.06,
             "policy_frequency": 5,
             "duration": 200,
-            "screen_width": 900,
-            "screen_height": 700,
+            "screen_width": 600,
+            "screen_height": 350,
             "centering_position": [0.5, 0.5],
             "scaling": 7,
             "controlled_vehicles": 1
