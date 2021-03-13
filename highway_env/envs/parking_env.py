@@ -259,11 +259,11 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         """The episode is over if the ego vehicle crashed or the goal is reached."""
         time = self.steps >= self.config["duration"]
         crashed = any(vehicle.crashed for vehicle in self.controlled_vehicles)
-        das = any(vehicle.dash for vehicle in self.controlled_vehicles)
+        #das = any(vehicle.dash for vehicle in self.controlled_vehicles)
         obs = self.observation_type.observe()
         obs = obs if isinstance(obs, tuple) else (obs,)
         success = all(self._is_success(agent_obs['achieved_goal'], agent_obs['desired_goal']) for agent_obs in obs)
-        return time or success or das
+        return time 
     
         
 register(
