@@ -225,6 +225,8 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             c = c*-1
             other_vehicles_type = utils.class_from_path(self.config["other_vehicles_type"])
             vehicle_2 = other_vehicles_type(self.road,[c*i*5, c*i*1] , speed=.7)
+            self.road.vehicles.append(vehicle_2)
+            
         
 
 
