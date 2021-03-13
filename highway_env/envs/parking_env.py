@@ -155,7 +155,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "action": {
                 "type": "ContinuousAction"
             },
-            "simulation_frequency": 15,
+            "simulation_frequency": 9, #15
             "initial_vehicle_count":20,
             "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
             "spawn_probability":0.06,
@@ -164,7 +164,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "screen_width": 600,
             "screen_height": 300,
             "centering_position": [0.5, 0.5],
-            "scaling": 7,
+            "scaling": 12, #7
             "controlled_vehicles": 1
         })
         return config
@@ -256,6 +256,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         return self.compute_reward(achieved_goal, desired_goal, {}) > -self.SUCCESS_GOAL_REWARD
 
     def _is_terminal(self) -> bool:
+        
         """The episode is over if the ego vehicle crashed or the goal is reached."""
         time = self.steps >= self.config["duration"]
         crashed = any(vehicle.crashed for vehicle in self.controlled_vehicles)
