@@ -207,6 +207,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         self.controlled_vehicles = []
         for i in range(self.config["controlled_vehicles"]):
             vehicle = self.action_type.vehicle_class(self.road, [i*20, 0], 2*np.pi*self.np_random.rand(), 0)
+            vehicle.color = RED
             self.road.vehicles.append(vehicle)
             self.controlled_vehicles.append(vehicle)
         self.initial_vehicle_count = []
