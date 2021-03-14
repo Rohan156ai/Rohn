@@ -155,7 +155,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "action": {
                 "type": "ContinuousAction"
             },
-            "simulation_frequency": 9, #15
+            "simulation_frequency": 15,
             "initial_vehicle_count":20,
             "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
             "spawn_probability":0.06,
@@ -164,7 +164,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "screen_width": 600,
             "screen_height": 300,
             "centering_position": [0.5, 0.5],
-            "scaling": 12, #7
+            "scaling": 7,
             "controlled_vehicles": 1
         })
         return config
