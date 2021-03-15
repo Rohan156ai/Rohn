@@ -155,7 +155,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "action": {
                 "type": "ContinuousAction"
             },
-            "simulation_frequency": 2,
+            "simulation_frequency": 15,
             "initial_vehicle_count":20,
             "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
             "spawn_probability":0.06,
