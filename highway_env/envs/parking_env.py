@@ -230,8 +230,8 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
         
 
 
-        #lane = self.np_random.choice(self.road.network.lanes_list())
-        lane = self.road.lanes_list[4]
+        lane = self.np_random.choice(self.road.network.lanes_list())
+        
         self.goal = Landmark(self.road, lane.position(lane.length/2, 0), heading=lane.heading)
         self.road.objects.append(self.goal)
 
