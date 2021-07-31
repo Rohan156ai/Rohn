@@ -237,7 +237,7 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             
             self.road.vehicles.append(vehicle)
             self.controlled_vehicles.append(vehicle)
-    #    self.initial_vehicle_count = []
+        self.initial_vehicle_count = []
         c = 1
         for i in range(1,self.config["initial_vehicle_count"]):
             c = c*-1
