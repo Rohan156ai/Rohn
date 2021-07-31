@@ -52,14 +52,14 @@ class ParkingEnv(AbstractEnv, GoalEnv):
             "scaling": 7,
             "controlled_vehicles": 1
             
-            """simulation_frequency": 15,
-            "policy_frequency": 5,
-            "duration": 100,
-            "screen_width": 600,
-            "screen_height": 300,
-            "centering_position": [0.5, 0.5],
-            "scaling": 7,
-            "controlled_vehicles": 1"""
+       #     """simulation_frequency": 15,
+        #    "policy_frequency": 5,
+         #   "duration": 100,
+        #    "screen_width": 600,
+         #   "screen_height": 300,
+         #   "centering_position": [0.5, 0.5],
+          #  "scaling": 7,
+           # "controlled_vehicles": 1"""
         })
         return config
 
@@ -181,17 +181,17 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "scaling": 7,
             "controlled_vehicles": 1
             
-            """simulation_frequency": 15,
-            "initial_vehicle_count":20,
-            "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
-            "spawn_probability":0.06,
-            "policy_frequency": 5,
-            "duration": 300,
-            "screen_width": 600,
-            "screen_height": 300,
-            "centering_position": [0.5, 0.5],
-            "scaling": 7,
-            "controlled_vehicles": 1"""
+   #         """simulation_frequency": 15,
+    #        "initial_vehicle_count":20,
+     #       "other_vehicle_type":"highway-env.vehicle.behavior.LinearVehicle",
+     #       "spawn_probability":0.06,
+   #         "policy_frequency": 5,
+    #        "duration": 300,
+     #       "screen_width": 600,
+      #      "screen_height": 300,
+       #     "centering_position": [0.5, 0.5],
+        #    "scaling": 7,
+         #   "controlled_vehicles": 1"""
         })
         return config
 
