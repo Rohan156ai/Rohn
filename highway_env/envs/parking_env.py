@@ -179,7 +179,8 @@ class ParkingEnv_new(AbstractEnv,GoalEnv):
             "screen_height": 300,
             "centering_position": [0.5, 0.5],
             "scaling": 7,
-            "controlled_vehicles": 1
+            "controlled_vehicles": 1,
+            "initial_vehicle_count":20
             
    #         """simulation_frequency": 15,
     #        "initial_vehicle_count":20,
